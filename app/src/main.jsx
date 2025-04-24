@@ -1,4 +1,3 @@
-
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react"
 import React, {StrictMode} from "react"
 import { createRoot } from "react-dom/client"
