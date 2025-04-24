@@ -1,6 +1,7 @@
 import { Box, Container } from '@chakra-ui/react'
 import Header from './components/Header'
-import FilterBar from './components/FilterBar' // <-- Импортируйте FilterBar
+import FilterBar from './components/FilterBar'
+import MovieGrid  from "./components/MovieGrid.jsx";
 
 function App() {
     return (
@@ -13,7 +14,7 @@ function App() {
                 <FilterBar />
 
                 <Box as="main">
-                    Main Content Placeholder
+                    <MovieGrid/>
                 </Box>
             </Container>
 
