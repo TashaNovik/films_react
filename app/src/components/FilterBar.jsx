@@ -18,12 +18,10 @@ function FilterBar() {
             <Heading as="h2" size="xl" fontWeight="bold">
                 Фильмы
             </Heading>
-            {/*<Text>*/}
-            {/*    Место для чекбоксов</Text>*/}
-            <CircleCheckbox label="Драма"></CircleCheckbox>
-            <CircleCheckbox label="Боевик"></CircleCheckbox>
-            <CircleCheckbox label="Триллер"></CircleCheckbox>
-            <CircleCheckbox label="Комедия"></CircleCheckbox>
+            <CircleCheckbox label="Боевик" colorPalette="red" borderColor="red"></CircleCheckbox>
+            <CircleCheckbox label="Триллер" colorPalette="green" borderColor="green"></CircleCheckbox>
+            <CircleCheckbox label="Комедия" colorPalette="blue" borderColor="blue"></CircleCheckbox>
+            <CircleCheckbox label="Драма" colorPalette="black" borderColor="black"></CircleCheckbox>
         </Flex>
     );
 }
