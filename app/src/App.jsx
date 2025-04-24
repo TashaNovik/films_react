@@ -19,8 +19,8 @@ function App() {
             </Container>
 
             {/* Место для Footer */}
-            <Box as="footer" bg="gray.800" color="white" p={4} mt={8}>
-                Footer Placeholder
+            <Box as="footer" bg="black" color="white" p={8} mt={16}>
+                Фильмограф
             </Box>
         </Box>
     )
