@@ -3,7 +3,6 @@ import { SimpleGrid, Box } from '@chakra-ui/react';
 import MovieCard from './MovieCard';
 
 function MovieGrid({ movies }) {
-// временно захардкодь значениея movies
     movies = [
         {
             "id": 1,
