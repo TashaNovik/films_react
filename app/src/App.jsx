@@ -1,15 +1,14 @@
 import { Box, Container } from '@chakra-ui/react'
+import Header from './components/Header' // <-- Импортируйте Header
 
 function App() {
     return (
-        <Box bg="gray.50" minH="100vh"> {/* Используем Box как основной контейнер с фоном */}
-            {/* Место для Header */}
-            <Box as="header" bg="white" boxShadow="sm" p={4}>
-                Header Placeholder
-            </Box>
+        <Box bg="gray.50" minH="100vh">
+            {/* 👇 Замените плейсхолдер на компонент Header */}
+            <Header />
 
             {/* Основной контент */}
-            <Container maxW="container.xl" py={8}> {/* Ограничиваем ширину контента */}
+            <Container maxW="container.xl" py={8}>
                 <Box as="main">
                     Main Content Placeholder
                 </Box>
