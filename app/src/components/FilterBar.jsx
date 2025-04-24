@@ -1,12 +1,30 @@
 import React from 'react';
-import { Box, Text } from '@chakra-ui/react'; // Импортируем пару базовых компонентов
+// Добавляем Heading в импорты
+import {Box, Text, Flex, Heading} from '@chakra-ui/react';
+import {Checkbox} from "@chakra-ui/react";
+import {HiCheckCircle} from "react-icons/hi";
+import CircleCheckbox from "./CircleCheckbox.jsx";
 
 function FilterBar() {
-    // Возвращаем только простой Box с текстом
     return (
-        <Box border="1px dashed red" p={4}> {/* Добавим рамку для наглядности */}
-            <Text>Это минимальный FilterBar</Text>
-        </Box>
+        <Flex
+            alignItems="center"
+            justifyContent="space-between"
+            mb={6}
+            flexWrap="wrap"
+            gap={4}
+
+        >
+            <Heading as="h2" size="xl" fontWeight="bold">
+                Фильмы
+            </Heading>
+            {/*<Text>*/}
+            {/*    Место для чекбоксов</Text>*/}
+            <CircleCheckbox label="Драма"></CircleCheckbox>
+            <CircleCheckbox label="Боевик"></CircleCheckbox>
+            <CircleCheckbox label="Триллер"></CircleCheckbox>
+            <CircleCheckbox label="Комедия"></CircleCheckbox>
+        </Flex>
     );
 }
 
