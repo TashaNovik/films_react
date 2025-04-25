@@ -2,8 +2,8 @@ import React from 'react';
 import { SimpleGrid, Box } from '@chakra-ui/react';
 import MovieCard from './MovieCard';
 
-function MovieGrid({ movies }) {
-    movies = [
+function getMovies() {
+    return [
         {
             "id": 1,
             "title": "Матрица",
@@ -77,7 +77,17 @@ function MovieGrid({ movies }) {
             "rating": 3
         }
     ]
-    if (!movies || movies.length === 0) {
+}
+
+function MovieGrid({ selectedGenres}) {
+    // genres=['Боевик', 'Драма'];
+    let movies = getMovies();
+    const filteredMovies = selectedGenres.length > 0
+        ? movies.filter(movie => selectedGenres.includes(movie.genre))
+        : movies;
+
+
+    if (!filteredMovies || filteredMovies.length === 0) {
         return <Box>Нет фильмов для отображения.</Box>;
     }
 
@@ -89,7 +99,7 @@ function MovieGrid({ movies }) {
             columnGap={4}
             p={4}
         >
-            {movies.map((movie) => (
+            {filteredMovies.map((movie) => (
                 <MovieCard key={movie.id} movieData={movie} />
             ))}
         </SimpleGrid>
