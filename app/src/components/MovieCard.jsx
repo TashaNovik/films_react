@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import {Box, Image, Badge, Icon, IconButton} from '@chakra-ui/react';
-import { MdAccessTime } from "react-icons/md";
-import { FaStar, FaRegStar } from 'react-icons/fa';
-
-
-
+import React, {useState} from 'react';
+import {Box, Image, Badge, Icon, IconButton, Text} from '@chakra-ui/react';
+import {MdAccessTime} from "react-icons/md";
+import {FaStar, FaRegStar} from 'react-icons/fa';
 
 
 function GetGenreColor(genre) {
@@ -38,9 +35,24 @@ function MovieCard(props) {
              borderWidth="1px"
              borderColor="border.disabled"
              color="fg.disabled">
-            <Image src={props.movieData.posterUrl}/>
 
-            {props.movieData.title}
+            <Image src={props.movieData.posterUrl}
+                   objectFit="cover"
+                   width="100%"
+                   aspectRatio={16 / 9}
+            />
+
+            <Text
+                fontWeight="bold"
+                fontSize="lg"
+                lineHeight="tight"
+                isTruncated
+                mb={3}
+                ml={4}
+                mt={4}
+            >{props.movieData.title}
+            </Text>
+
             <Badge colorPalette={GetGenreColor(props.movieData.genre)} variant="subtle" borderRadius="full">
                 {props.movieData.genre}
             </Badge>
@@ -56,7 +68,7 @@ function MovieCard(props) {
                 size="md"
                 fontSize="20px"
             >
-                {isFavorite ? <FaStar /> : <FaRegStar />}
+                {isFavorite ? <FaStar/> : <FaRegStar/>}
             </IconButton>
 
         </Box>
