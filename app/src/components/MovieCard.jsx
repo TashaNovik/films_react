@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Image, Badge, Icon, IconButton, Text} from '@chakra-ui/react';
+import {Box, Image, Badge, Icon, IconButton, Text, Flex} from '@chakra-ui/react';
 import {MdAccessTime} from "react-icons/md";
 import {FaStar, FaRegStar} from 'react-icons/fa';
 
@@ -31,6 +31,7 @@ function MovieCard(props) {
     // 3. Определяем aria-label в зависимости от состояния
     const buttonAriaLabel = isFavorite ? "Убрать из избранного" : "Добавить в избранное";
     return (
+
         <Box borderRadius="md"
              borderWidth="1px"
              borderColor="border.disabled"
@@ -54,26 +55,31 @@ function MovieCard(props) {
             >{props.movieData.title}
             </Text>
 
-            <Badge colorPalette={GetGenreColor(props.movieData.genre)} variant="subtle" borderRadius="full" ml={4} mr={19}>
-                {props.movieData.genre}
-            </Badge>
-            <Icon size="lg" color="black">
-                <MdAccessTime/>
-            </Icon>
-            {props.movieData.duration} мин.
-            <IconButton
-                aria-label={buttonAriaLabel}
-                onClick={handleToggleFavorite}
-                variant="ghost"
-                color="yellow.400"
-                size="md"
-                fontSize="20px"
-                ml={19}
-                mr={19}
-            >
-                {isFavorite ? <FaStar/> : <FaRegStar/>}
-            </IconButton>
-
+            <Flex
+                alignItems="center"
+            justifyContent="space-between">
+                <Badge colorPalette={GetGenreColor(props.movieData.genre)} variant="subtle" borderRadius="full" ml={4}>
+                    {props.movieData.genre}
+                </Badge>
+                <Flex
+                gap={3}>
+                    <Icon size="lg" color="black">
+                        <MdAccessTime/>
+                    </Icon>
+                    {props.movieData.duration} мин.
+                </Flex>
+                <IconButton
+                    aria-label={buttonAriaLabel}
+                    onClick={handleToggleFavorite}
+                    variant="ghost"
+                    color="yellow.400"
+                    size="md"
+                    fontSize="20px"
+                    mr={4}
+                >
+                    {isFavorite ? <FaStar/> : <FaRegStar/>}
+                </IconButton>
+            </Flex>
         </Box>
     );
 }
