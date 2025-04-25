@@ -1,9 +1,13 @@
-import React from 'react';
-import { Box, Container, Heading, HStack, Link, Spacer } from '@chakra-ui/react';
+import React, {useState} from 'react';
+import {Box, Container, Heading, HStack, Spacer} from '@chakra-ui/react';
+import {Routes, Route, BrowserRouter, Link} from 'react-router-dom';
+import {Link as ChakraLink} from '@chakra-ui/react';
+import {Link as RouterLink} from 'react-router-dom';
+
 
 function Header() {
-    // В реальном приложении активная ссылка будет определяться роутером
-    const activeLink = "Все фильмы"; // Просто для примера
+    const [activeLink, setActiveLink] = useState('Все фильмы');
+
 
     return (
         <Box as="header" bg="white" boxShadow="sm"> {/* Белый фон и легкая тень */}
@@ -13,37 +17,45 @@ function Header() {
                     <Heading as="h1" size="md" color="gray.500" fontWeight="normal">
                         Главная
                     </Heading>
-
                     {/* Навигация */}
                     <HStack as="nav" spacing={6}>
-                        <Link
-                            href="#"
-                            fontWeight={activeLink === 'Все фильмы' ? 'semibold' : 'medium'} // Жирный для активной
-                            color={activeLink === 'Все фильмы' ? 'blue.600' : 'gray.700'} // Синий для активной
-                            _hover={{ color: 'blue.500' }} // Цвет при наведении
+                        <ChakraLink as={RouterLink}
+                                    to="/"
+                                    href="#"
+                                    fontWeight={activeLink === 'Все фильмы' ? 'semibold' : 'medium'} // Жирный для активной
+                                    color={activeLink === 'Все фильмы' ? 'blue.600' : 'gray.700'} // Синий для активной
+                                    _hover={{color: 'blue.500'}} // Цвет при наведении
+                                    onClick={() => {
+                                        setActiveLink('Все фильмы')
+                                    }}
                         >
                             Все фильмы
-                        </Link>
-                        <Link
-                            href="#"
-                            fontWeight={activeLink === 'Избранное' ? 'semibold' : 'medium'}
-                            color={activeLink === 'Избранное' ? 'blue.600' : 'gray.700'}
-                            _hover={{ color: 'blue.500' }}
+                        </ChakraLink>
+                        <ChakraLink as={RouterLink}
+                                    to="/favorites"
+                                    href="#"
+                                    fontWeight={activeLink === 'Избранное' ? 'semibold' : 'medium'}
+                                    color={activeLink === 'Избранное' ? 'blue.600' : 'gray.700'}
+                                    _hover={{color: 'blue.500'}}
+                                    onClick={() => {
+                                        setActiveLink('Избранное')
+                                    }}
                         >
                             Избранное
-                        </Link>
-                        <Link
-                            href="#"
-                            fontWeight={activeLink === 'Добавить фильм' ? 'semibold' : 'medium'}
-                            color={activeLink === 'Добавить фильм' ? 'blue.600' : 'gray.700'}
-                            _hover={{ color: 'blue.500' }}
+                        </ChakraLink>
+                        <ChakraLink as={RouterLink}
+                                    to="/add"
+                                    href="#"
+                                    fontWeight={activeLink === 'Добавить фильм' ? 'semibold' : 'medium'}
+                                    color={activeLink === 'Добавить фильм' ? 'blue.600' : 'gray.700'}
+                                    _hover={{color: 'blue.500'}}
+                                    onClick={() => {
+                                        setActiveLink('Добавить фильм')
+                                    }}
                         >
                             Добавить фильм
-                        </Link>
+                        </ChakraLink>
                     </HStack>
-
-                    {/* Spacer можно использовать для расталкивания элементов, если нужно */}
-                    {/* <Spacer /> */}
                 </HStack>
             </Container>
         </Box>
