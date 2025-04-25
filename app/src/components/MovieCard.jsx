@@ -37,6 +37,7 @@ function MovieCard(props) {
              color="fg.disabled">
 
             <Image src={props.movieData.posterUrl}
+                   borderRadius="md"
                    objectFit="cover"
                    width="100%"
                    aspectRatio={16 / 9}
@@ -53,7 +54,7 @@ function MovieCard(props) {
             >{props.movieData.title}
             </Text>
 
-            <Badge colorPalette={GetGenreColor(props.movieData.genre)} variant="subtle" borderRadius="full">
+            <Badge colorPalette={GetGenreColor(props.movieData.genre)} variant="subtle" borderRadius="full" ml={4} mr={19}>
                 {props.movieData.genre}
             </Badge>
             <Icon size="lg" color="black">
@@ -67,6 +68,8 @@ function MovieCard(props) {
                 color="yellow.400"
                 size="md"
                 fontSize="20px"
+                ml={19}
+                mr={19}
             >
                 {isFavorite ? <FaStar/> : <FaRegStar/>}
             </IconButton>
