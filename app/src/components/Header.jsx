@@ -10,7 +10,7 @@ function Header() {
 
 
     return (
-        <Box as="header" bg="white" boxShadow="sm"> {/* Белый фон и легкая тень */}
+        <Box as="header"> {/* Белый фон и легкая тень */}
             <Container maxW="container.xl" py={3}> {/* Ограничиваем ширину и добавляем верт. отступы */}
                 <HStack spacing={10}> {/* Горизонтальный стек с отступами */}
                     {/* Навигация */}

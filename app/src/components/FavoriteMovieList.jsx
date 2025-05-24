@@ -1,8 +1,8 @@
 import React from 'react';
-import { SimpleGrid, Box, Text } from '@chakra-ui/react';
-import MovieCard from './MovieCard';
+import { Box, Text, VStack } from '@chakra-ui/react';
+import FavoriteMovieItem from './FavoriteMovieItem';
 
-function FavoriteMovieList({ movies, favoriteMovies, toggleFavorite }) {
+function FavoriteMovieList({ movies, toggleFavorite }) {
     // Фильтруем только те фильмы, которые действительно существуют (не undefined)
     const validFavoriteMovies = movies.filter(movie => movie != null);
 
@@ -17,24 +17,18 @@ function FavoriteMovieList({ movies, favoriteMovies, toggleFavorite }) {
                 </Text>
             </Box>
         );
-    }
-
-    return (
-        <SimpleGrid
-            columns={{ base: 1, sm: 2, md: 3 }}
-            rowGap={4}
-            columnGap={4}
-            p={4}
-        >
-            {validFavoriteMovies.map((movie) => (
-                <MovieCard 
-                    key={movie.id} 
-                    movieData={movie}
-                    isFavorite={favoriteMovies.has(movie.id)}
-                    toggleFavorite={toggleFavorite}
-                />
-            ))}
-        </SimpleGrid>
+    }    return (
+        <Box bg="white" overflow="hidden">
+            <VStack spacing={0} align="stretch">
+                {validFavoriteMovies.map((movie) => (
+                    <FavoriteMovieItem 
+                        key={movie.id} 
+                        movieData={movie}
+                        toggleFavorite={toggleFavorite}
+                    />
+                ))}
+            </VStack>
+        </Box>
     );
 }
 

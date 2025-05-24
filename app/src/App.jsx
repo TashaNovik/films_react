@@ -28,7 +28,7 @@ function App() {
     };
 
     return (
-        <Box bg="gray.50" minH="100vh">
+        <Box  minH="100vh">
             <Header/>
             <Routes>
                 <Route path="/" element={
@@ -51,7 +51,6 @@ function App() {
                                         Избранное
                                     </Heading>                        <FavoriteMovieList
                             movies={Array.from(favoriteMovies).map(id => movies.find(movie => movie.id === id)).filter(Boolean)}
-                            favoriteMovies={favoriteMovies}
                             toggleFavorite={toggleFavorite}
                         />
                     </Container>
