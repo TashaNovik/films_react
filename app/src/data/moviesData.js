@@ -2,73 +2,79 @@ export const moviesData = [
     {
         "id": 1,
         "title": "Матрица",
-        "posterUrl": 'src/assets/Matrix.png',
+        "posterUrl": '/src/assets/Matrix.png',
         "genre": "Боевик",
         "duration": 136,
-        "rating": 5
+        "rating": 5,
+        "description": "Программист Нео случайно узнаёт, что его реальность — это лишь сложная компьютерная симуляция. Вместе с загадочным Морфеусом он должен научиться управлять Матрицей и победить машины."
     },
     {
         "id": 2,
         "title": "Безумный Макс",
-        "posterUrl": 'src/assets/Mad_Max.png',
+        "posterUrl": '/src/assets/Mad_Max.png',
         "genre": "Боевик",
         "duration": 88,
-        "rating": 4
+        "rating": 4,
+        "description": "В постапокалиптическом мире, где вода и бензин — самые ценные ресурсы, бывший полицейский Макс вынужден выживать среди банд мародёров и тиранов."
     },
     {
         "id": 3,
         "title": "Джентльмены",
-        "posterUrl": 'src/assets/Gentlemen.png',
-        "genre": "Драма",
+        "posterUrl": '/src/assets/Gentlemen.png',"genre": "Драма",
         "duration": 113,
-        "rating": 4
-    },
-    {
+        "rating": 4,
+        "description": "Богатый американский экспат Микки Пирсон строит высокодоходную империю марихуаны в Лондоне. Когда слухи о том, что он хочет обналичить операцию, создают хаос, схемы, подкуп и шантаж пытаются подорвать его с трона."
+    },    {
         "id": 4,
         "title": "Отступники",
-        "posterUrl": 'src/assets/Renegades.png',
+        "posterUrl": '/src/assets/Renegades.png',
         "genre": "Триллер",
         "duration": 151,
-        "rating": 5
+        "rating": 5,
+        "description": "Полицейский под прикрытием внедряется в ирландскую мафию, в то время как криминальный авторитет внедряет своего человека в полицию. Каждый пытается выявить личность другого, пока их миры не сталкиваются лицом к лицу."
     },
     {
         "id": 5,
         "title": "Гладиатор",
-        "posterUrl": 'src/assets/Gladiator.png',
+        "posterUrl": '/src/assets/Gladiator.png',
         "genre": "Боевик",
         "duration": 155,
-        "rating": 5
+        "rating": 5,
+        "description": "Римский генерал Максимус предан императором Коммодом, его семья убита. Превращённый в раба, он становится гладиатором и поднимается через ряды арены, чтобы отомстить человеку, который отнял у него всё."
     },
     {
         "id": 6,
         "title": "Однажды в Голливиде",
-        "posterUrl": 'src/assets/Once_in_HW.png',
+        "posterUrl": '/src/assets/Once_in_HW.png',
         "genre": "Драма",
         "duration": 161,
-        "rating": 4
-    },
-    {
+        "rating": 4,
+        "description": "Угасающая звезда телевизионных вестернов и его дублёр-каскадёр стремятся к славе и успеху в киноиндустрии во время последних лет золотого века Голливуда в 1969 году."
+    },    {
         "id": 7,
         "title": "Предложение",
-        "posterUrl": 'src/assets/Purpose.png',
+        "posterUrl": '/src/assets/Purpose.png',
         "genre": "Комедия",
         "duration": 108,
-        "rating": 3
+        "rating": 3,
+        "description": "Когда властная редактор книжного издательства сталкивается с депортацией в Канаду, она убеждает своего молодого помощника жениться на ней, чтобы остаться в США."
     },
     {
         "id": 8,
         "title": "Малышка на миллион",
-        "posterUrl": 'src/assets/Million_baby.png',
+        "posterUrl": '/src/assets/Million_baby.png',
         "genre": "Драма",
         "duration": 132,
-        "rating": 5
+        "rating": 5,
+        "description": "Тренер по боксу Фрэнки неохотно соглашается тренировать Мэгги, решительную женщину-боксёра. Вскоре он понимает, что Мэгги не только борется за свои мечты, но и за его."
     },
     {
         "id": 9,
         "title": "Ларри Краун",
-        "posterUrl": 'src/assets/Larry_Crown.png',
+        "posterUrl": '/src/assets/Larry_Crown.png',
         "genre": "Комедия",
         "duration": 98,
-        "rating": 3
+        "rating": 3,
+        "description": "После увольнения средних лет Ларри поступает в общественный колледж и влюбляется в своего преподавателя речи, которая потеряла веру в любовь."
     }
 ];

@@ -60,6 +60,7 @@ function FavoriteMovieItem({ movieData, toggleFavorite }) {
                     color="gray.400"
                     size="sm"
                     ml="auto"
+                    _hover={{ color: "black"}}
                 >
                     Удалить
                 </IconButton>

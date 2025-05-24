@@ -2,6 +2,7 @@ import React from 'react';
 import {Box, Image, Badge, Icon, IconButton, Text, Flex} from '@chakra-ui/react';
 import {MdAccessTime} from "react-icons/md";
 import {FaStar, FaRegStar} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 
 function GetGenreColor(genre) {
@@ -20,12 +21,17 @@ function GetGenreColor(genre) {
 }
 
 function MovieCard(props) {
-// 1. Состояние для отслеживания, выбрана ли звезда
     const { movieData, isFavorite, toggleFavorite } = props;
+    const navigate = useNavigate();
 
     // Обработчик клика для переключения состояния
     const handleToggleFavorite = () => {
         toggleFavorite(movieData.id);
+    };
+
+    // Обработчик клика по названию фильма
+    const handleTitleClick = () => {
+        navigate(`/movie/${movieData.id}`);
     };
 
     // Определяем aria-label в зависимости от состояния
@@ -35,14 +41,13 @@ function MovieCard(props) {
         <Box borderRadius="md"
              borderWidth="1px"
              borderColor="border.disabled"
-             color="fg.disabled">            <Image src={movieData.posterUrl}
+             color="fg.disabled">            <
+                Image src={movieData.posterUrl}
                    borderRadius="md"
                    objectFit="cover"
                    width="100%"
                    aspectRatio={16 / 9}
-            />
-
-            <Text
+            />            <Text
                 fontWeight="bold"
                 fontSize="lg"
                 lineHeight="tight"
@@ -50,12 +55,17 @@ function MovieCard(props) {
                 mb={3}
                 ml={4}
                 mt={4}
+                cursor="pointer"
+                color="blue.600"
+                _hover={{ color: "blue.800", textDecoration: "underline" }}
+                onClick={handleTitleClick}
             >{movieData.title}
             </Text>
 
             <Flex
                 alignItems="center"
-            justifyContent="space-between">                <Badge colorPalette={GetGenreColor(movieData.genre)} variant="subtle" borderRadius="full" ml={4}>
+            justifyContent="space-between">                
+            <Badge colorPalette={GetGenreColor(movieData.genre)} variant="subtle" borderRadius="full" ml={4}>
                     {movieData.genre}
                 </Badge>
                 <Flex

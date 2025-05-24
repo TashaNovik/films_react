@@ -7,6 +7,7 @@ import { Routes, Route, Link, BrowserRouter  } from 'react-router-dom';
 import AddMoviePage from "./components/AddMoviePage.jsx";
 import {Heading} from "@chakra-ui/react";
 import FavoriteMovieList from "./components/FavoriteMovieList.jsx";
+import MovieDetailPage from "./components/MovieDetailPage.jsx";
 import { moviesData } from './data/moviesData';
 
 
@@ -25,41 +26,41 @@ function App() {
             }
             return newFavorites;
         });
-    };
-
-    return (
-        <Box  minH="100vh">
+    };    return (
+        <Box minH="100vh" display="flex" flexDirection="column">
             <Header/>
-            <Routes>
-                <Route path="/" element={
-                    <Container maxW="container.xl" py={8}>
-                        {/* 👇 Добавьте FilterBar здесь */}
-                        <FilterBar selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
-                        <Box as="main">
-                            <MovieGrid 
-                                movies={movies}
-                                selectedGenres={selectedGenres}
-                                favoriteMovies={favoriteMovies}
+            <Box flex="1">
+                <Routes>
+                    <Route path="/" element={
+                        <Container maxW="container.xl" py={8}>
+                            {/* 👇 Добавьте FilterBar здесь */}
+                            <FilterBar selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
+                            <Box as="main">
+                                <MovieGrid 
+                                    movies={movies}
+                                    selectedGenres={selectedGenres}
+                                    favoriteMovies={favoriteMovies}
+                                    toggleFavorite={toggleFavorite}
+                                />
+                            </Box>
+                        </Container>
+                    } />
+                    <Route path="/favorites" element={
+                        <Container maxW="container.xl" py={8}>
+                            <Heading fontWeight="bold" fontSize="2xl" color="gray.800">
+                                            Избранное
+                                        </Heading>                        <FavoriteMovieList
+                                movies={Array.from(favoriteMovies).map(id => movies.find(movie => movie.id === id)).filter(Boolean)}
                                 toggleFavorite={toggleFavorite}
                             />
-                        </Box>
-                    </Container>
-                } />
-                <Route path="/favorites" element={
-                    <Container maxW="container.xl" py={8}>
-                        <Heading fontWeight="bold" fontSize="2xl" color="gray.800">
-                                        Избранное
-                                    </Heading>                        <FavoriteMovieList
-                            movies={Array.from(favoriteMovies).map(id => movies.find(movie => movie.id === id)).filter(Boolean)}
-                            toggleFavorite={toggleFavorite}
-                        />
-                    </Container>
-                } />
-                <Route path="/add" element={<AddMoviePage/>} />
-            </Routes>
+                        </Container>
+                    } />                <Route path="/add" element={<AddMoviePage/>} />
+                    <Route path="/movie/:id" element={<MovieDetailPage movies={movies} favoriteMovies={favoriteMovies} toggleFavorite={toggleFavorite} />} />
+                </Routes>
+            </Box>
 
-            {/* Место для Footer */}
-            <Box as="footer" bg="black" color="white" p={8} mt={16}>
+            {/* Footer - всегда внизу */}
+            <Box as="footer" bg="black" color="white" p={8} mt="auto">
                 Фильмограф
             </Box>
         </Box>
