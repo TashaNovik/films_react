@@ -9,8 +9,17 @@ function CircleCheckbox({colorPalette, borderColor, label, isChecked, onChange})
         <Flex>
             <Checkbox.Root colorPalette={colorPalette} onChange={onChange} checked={isChecked}>
                 <Checkbox.HiddenInput />
-                <Checkbox.Control  rounded="full" borderColor={borderColor} >
-                    <Checkbox.Indicator />
+                <Checkbox.Control  
+                    rounded="full" 
+                    borderColor={borderColor}
+                    bg={isChecked ? borderColor : 'transparent'}
+                    _checked={{
+                        bg: borderColor,
+                        borderColor: borderColor,
+                        color: 'white'
+                    }}
+                >
+                    <Checkbox.Indicator color={isChecked ? 'white' : 'transparent'} />
                 </Checkbox.Control>
                 <Checkbox.Label>{label}</Checkbox.Label>
             </Checkbox.Root>

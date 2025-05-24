@@ -14,9 +14,7 @@ import { moviesData } from './data/moviesData';
 function App() {
     const [movies, setMovies] = useState(moviesData);
     const [selectedGenres, setSelectedGenres] = useState([]);
-    const [favoriteMovies, setFavoriteMovies] = useState(new Set());
-
-    const toggleFavorite = (movieId) => {
+    const [favoriteMovies, setFavoriteMovies] = useState(new Set());    const toggleFavorite = (movieId) => {
         setFavoriteMovies(prev => {
             const newFavorites = new Set(prev);
             if (newFavorites.has(movieId)) {
@@ -26,7 +24,25 @@ function App() {
             }
             return newFavorites;
         });
-    };    return (
+    };
+
+    const addMovie = (movieData) => {
+        const newMovie = {
+            ...movieData,
+            id: Math.max(...movies.map(m => m.id)) + 1,
+            posterUrl: movieData.posterUrl || '/src/assets/react.svg', // дефолтный постер
+            rating: 0
+        };
+        setMovies(prev => [...prev, newMovie]);
+    };
+
+    const updateMovie = (movieId, movieData) => {
+        setMovies(prev => prev.map(movie => 
+            movie.id === parseInt(movieId) 
+                ? { ...movie, ...movieData }
+                : movie
+        ));
+    };return (
         <Box minH="100vh" display="flex" flexDirection="column">
             <Header/>
             <Box flex="1">
@@ -53,8 +69,8 @@ function App() {
                                 movies={Array.from(favoriteMovies).map(id => movies.find(movie => movie.id === id)).filter(Boolean)}
                                 toggleFavorite={toggleFavorite}
                             />
-                        </Container>
-                    } />                <Route path="/add" element={<AddMoviePage/>} />
+                        </Container>                    } />                <Route path="/add" element={<AddMoviePage addMovie={addMovie} />} />
+                    <Route path="/edit/:id" element={<AddMoviePage isEdit={true} movies={movies} updateMovie={updateMovie} />} />
                     <Route path="/movie/:id" element={<MovieDetailPage movies={movies} favoriteMovies={favoriteMovies} toggleFavorite={toggleFavorite} />} />
                 </Routes>
             </Box>

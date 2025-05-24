@@ -63,7 +63,8 @@ function MovieDetailPage({ movies, favoriteMovies, toggleFavorite }) {
                 direction={{ base: "column", md: "row" }}
                 gap={8}
                 align="start"
-            >{/* Постер фильма */}                <Box flexShrink={0}>
+            >{/* Постер фильма */}
+                            <Box flexShrink={0}>
                     <Image
                         src={movie.posterUrl}
                         alt={movie.title}
@@ -132,14 +133,14 @@ function MovieDetailPage({ movies, favoriteMovies, toggleFavorite }) {
                         </Text>
                     </Box>
                 </VStack>
-            </Flex>
-            <Flex ml={1400}>
+            </Flex>            <Flex ml={1400}>
                 <Button
                     mt={20}
                     color="blue.600"
                     variant="outline"
                     _hover={{ bg: "#DEE2F2" }}
                     mr={10}
+                    onClick={() => navigate(`/edit/${movie.id}`)}
                 >
                     Редактировать
                 </Button>
