@@ -13,10 +13,6 @@ function Header() {
         <Box as="header" bg="white" boxShadow="sm"> {/* Белый фон и легкая тень */}
             <Container maxW="container.xl" py={3}> {/* Ограничиваем ширину и добавляем верт. отступы */}
                 <HStack spacing={10}> {/* Горизонтальный стек с отступами */}
-                    {/* Заголовок "Главная" */}
-                    <Heading as="h1" size="md" color="gray.500" fontWeight="normal">
-                        Главная
-                    </Heading>
                     {/* Навигация */}
                     <HStack as="nav" spacing={6}>
                         <ChakraLink as={RouterLink}

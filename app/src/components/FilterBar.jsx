@@ -8,7 +8,7 @@ function FilterBar( {selectedGenres, setSelectedGenres} ) {
         <Flex
             alignItems="center"
             width="100%" p={4}>
-            <Heading as="h2" size="xl" fontWeight="bold">
+            <Heading fontWeight="bold" fontSize="2xl" color="gray.800">
                 Фильмы
             </Heading>
             <Spacer/>

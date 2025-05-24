@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Box, Image, Badge, Icon, IconButton, Text, Flex} from '@chakra-ui/react';
 import {MdAccessTime} from "react-icons/md";
 import {FaStar, FaRegStar} from 'react-icons/fa';
@@ -21,23 +21,21 @@ function GetGenreColor(genre) {
 
 function MovieCard(props) {
 // 1. Состояние для отслеживания, выбрана ли звезда
-    const [isFavorite, setIsFavorite] = useState(false);
+    const { movieData, isFavorite, toggleFavorite } = props;
 
-    // 2. Обработчик клика для переключения состояния
+    // Обработчик клика для переключения состояния
     const handleToggleFavorite = () => {
-        setIsFavorite(!isFavorite);
+        toggleFavorite(movieData.id);
     };
 
-    // 3. Определяем aria-label в зависимости от состояния
+    // Определяем aria-label в зависимости от состояния
     const buttonAriaLabel = isFavorite ? "Убрать из избранного" : "Добавить в избранное";
     return (
 
         <Box borderRadius="md"
              borderWidth="1px"
              borderColor="border.disabled"
-             color="fg.disabled">
-
-            <Image src={props.movieData.posterUrl}
+             color="fg.disabled">            <Image src={movieData.posterUrl}
                    borderRadius="md"
                    objectFit="cover"
                    width="100%"
@@ -52,21 +50,20 @@ function MovieCard(props) {
                 mb={3}
                 ml={4}
                 mt={4}
-            >{props.movieData.title}
+            >{movieData.title}
             </Text>
 
             <Flex
                 alignItems="center"
-            justifyContent="space-between">
-                <Badge colorPalette={GetGenreColor(props.movieData.genre)} variant="subtle" borderRadius="full" ml={4}>
-                    {props.movieData.genre}
+            justifyContent="space-between">                <Badge colorPalette={GetGenreColor(movieData.genre)} variant="subtle" borderRadius="full" ml={4}>
+                    {movieData.genre}
                 </Badge>
                 <Flex
                 gap={3}>
                     <Icon size="lg" color="black">
                         <MdAccessTime/>
                     </Icon>
-                    {props.movieData.duration} мин.
+                    {movieData.duration} мин.
                 </Flex>
                 <IconButton
                     aria-label={buttonAriaLabel}
