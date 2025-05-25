@@ -99,9 +99,9 @@ function MovieDetailPage({ movies, favoriteMovies, toggleFavorite, deleteMovie }
                             onClick={handleToggleFavorite}
                         >
                             {isFavorite ? (
-                                <FaStar size="24px" color="#FFD700" />
+                                <FaStar size="24px" color="#F9A62B" />
                             ) : (
-                                <FaRegStar size="24px" color="#9CA3AF" />
+                                <FaRegStar size="24px" color="#F9A62B" />
                             )}
                         </Box>
                     </HStack>

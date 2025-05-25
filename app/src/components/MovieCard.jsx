@@ -84,7 +84,11 @@ function MovieCard(props) {
                     fontSize="20px"
                     mr={4}
                 >
-                    {isFavorite ? <FaStar/> : <FaRegStar/>}
+                            {isFavorite ? (
+                                <FaStar size="24px" color="#F9A62B" />
+                            ) : (
+                                <FaRegStar size="24px" color="#F9A62B" />
+                            )}
                 </IconButton>
             </Flex>
         </Box>
