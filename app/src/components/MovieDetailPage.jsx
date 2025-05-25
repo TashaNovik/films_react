@@ -58,7 +58,6 @@ function MovieDetailPage({ movies, favoriteMovies, toggleFavorite }) {
         );
     } return (
         <Container maxW="container.xl" py={8}>
-
             <Flex
                 direction={{ base: "column", md: "row" }}
                 gap={8}
@@ -78,7 +77,7 @@ function MovieDetailPage({ movies, favoriteMovies, toggleFavorite }) {
                 </Box>{/* Информация о фильме */}
                 <VStack align="start" flex={1} spacing={6}>                    {
                 /* Название и звезда избранного */}
-                    <HStack spacing={3} align="center" >
+                    <HStack spacing={3} align="center" justifyContent="space-between" width="100%">
                         <Heading size="2xl" color="gray.800" fontWeight="bold">
                             {movie.title}
                         </Heading>
@@ -86,11 +85,11 @@ function MovieDetailPage({ movies, favoriteMovies, toggleFavorite }) {
                             as="button"
                             cursor="pointer"
                             p={2}
-                            ml={1000}
                             borderRadius="md"
                             display="flex"
                             alignItems="center"
                             justifyContent="center"
+                            onClick={handleToggleFavorite}
                         >
                             {isFavorite ? (
                                 <FaStar size="24px" color="#FFD700" />
@@ -133,8 +132,10 @@ function MovieDetailPage({ movies, favoriteMovies, toggleFavorite }) {
                         </Text>
                     </Box>
                 </VStack>
-            </Flex>            <Flex ml={1400}>
+            </Flex>            
+            <Flex >
                 <Button
+                    ml="auto"
                     mt={20}
                     color="blue.600"
                     variant="outline"
