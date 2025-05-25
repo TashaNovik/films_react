@@ -49,7 +49,7 @@ function AddMoviePage({ isEdit = false, movies = [], addMovie, updateMovie }) {
     });// Загружаем данные фильма для редактирования
     useEffect(() => {
         if (isEdit && id && movies.length > 0) {
-            const movie = movies.find(m => m.id === parseInt(id));
+            const movie = movies.find(m => String(m.id) === String(id));
             if (movie) {
                 setFormData({
                     title: movie.title || '',
@@ -58,10 +58,13 @@ function AddMoviePage({ isEdit = false, movies = [], addMovie, updateMovie }) {
                     description: movie.description || '',
                     posterUrl: movie.posterUrl || ''
                 });
-                // Устанавливаем выбранный жанр
-                const genreValue = genres.find(g => g.label === movie.genre)?.value;
-                if (genreValue) {
-                    setSelectedGenres([genreValue]);
+                setSelectedGenres(movie.genre ? [movie.genre] : []);
+                if (movie.posterUrl) {
+                    setPreviewUrl(movie.posterUrl);
+                    // Получаем имя файла из URL
+                    const parts = movie.posterUrl.split('/');
+                    setFileName(parts[parts.length - 1]);
+                    setSelectedFile(null); // Нет локального файла, только URL
                 }
             }
         }
@@ -129,18 +132,17 @@ function AddMoviePage({ isEdit = false, movies = [], addMovie, updateMovie }) {
             genre: genres.find(g => selectedGenres.includes(g.value))?.label || selectedGenres[0],
             duration: parseInt(formData.duration),
             description: formData.description.trim() || '',
-            posterUrl: createPosterUrl(selectedFile)
-        }; try {
+            posterUrl: selectedFile ? createPosterUrl(selectedFile) : formData.posterUrl // <-- исправлено
+        };
+        try {
             if (isEdit && updateMovie) {
                 updateMovie(id, movieData);
-                alert(`Фильм успешно обновлен!${selectedFile ? '\nПримечание: Изображение будет доступно после его размещения в папке assets.' : ''}`);
             } else if (addMovie) {
                 addMovie(movieData);
-                alert(`Фильм успешно добавлен!${selectedFile ? '\nПримечание: Для отображения изображения поместите файл ' + selectedFile.name + ' в папку src/assets/' : ''}`);
             }
 
             // Очищаем превью URL если он был создан
-            if (previewUrl) {
+            if (previewUrl && selectedFile) {
                 URL.revokeObjectURL(previewUrl);
             }
 
@@ -236,8 +238,9 @@ function AddMoviePage({ isEdit = false, movies = [], addMovie, updateMovie }) {
                                     </FileUpload.ItemGroup>
                                 </HStack>
                             </FileUpload.Root>
-                        </HStack>                        {/* Превью выбранного изображения */}
-                        {previewUrl && (
+                        </HStack>
+                        {/* Превью выбранного изображения */}
+                        {/* {previewUrl && (
                             <HStack spacing={3} align="center" mt={4}>
                                 <label style={{ minWidth: 200 }}>Превью:</label>
                                 <Box>
@@ -256,10 +259,10 @@ function AddMoviePage({ isEdit = false, movies = [], addMovie, updateMovie }) {
                                     </Text>
                                     <Text fontSize="xs" color="gray.500">
                                         URL: {createPosterUrl(selectedFile)}
-                                    </Text>
+                                    </Text> 
                                 </Box>
                             </HStack>
-                        )}
+                        )} */}
                         <Flex justify="center" mt="auto" pt={6}>
                             <Button
                                 bg="rgba(74, 97, 221, 0.7)"
