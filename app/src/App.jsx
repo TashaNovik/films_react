@@ -35,6 +35,9 @@ function App() {
         };
         setMovies(prev => [...prev, newMovie]);
     };
+    const deleteMovie = (movieId) => {
+        setMovies(prev => prev.filter(movie => movie.id !== movieId));
+    };
 
     const updateMovie = (movieId, movieData) => {
         setMovies(prev => prev.map(movie => 
@@ -71,7 +74,7 @@ function App() {
                             />
                         </Container>                    } />                <Route path="/add" element={<AddMoviePage addMovie={addMovie} />} />
                     <Route path="/edit/:id" element={<AddMoviePage isEdit={true} movies={movies} updateMovie={updateMovie} />} />
-                    <Route path="/movie/:id" element={<MovieDetailPage movies={movies} favoriteMovies={favoriteMovies} toggleFavorite={toggleFavorite} />} />
+                    <Route path="/movie/:id" element={<MovieDetailPage movies={movies} favoriteMovies={favoriteMovies} toggleFavorite={toggleFavorite} deleteMovie={deleteMovie} />} />
                 </Routes>
             </Box>
 

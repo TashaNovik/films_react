@@ -32,7 +32,7 @@ function GetGenreColor(genre) {
     }
 }
 
-function MovieDetailPage({ movies, favoriteMovies, toggleFavorite }) {
+function MovieDetailPage({ movies, favoriteMovies, toggleFavorite, deleteMovie }) {
     const { id } = useParams();
     const navigate = useNavigate();
     const movie = movies.find(m => m.id === parseInt(id));
@@ -43,6 +43,13 @@ function MovieDetailPage({ movies, favoriteMovies, toggleFavorite }) {
         if (movie && toggleFavorite) {
             toggleFavorite(movie.id);
         }
+    };
+
+    const handleDelete = () => {
+        if (deleteMovie) {
+            deleteMovie(movie.id);
+        }
+        navigate('/');
     };
 
     if (!movie) {
@@ -150,7 +157,7 @@ function MovieDetailPage({ movies, favoriteMovies, toggleFavorite }) {
                     color="blue.600"
                     variant="outline"
                     _hover={{ bg: "#DEE2F2" }}
-
+                    onClick={handleDelete}
                 >
                     Удалить
                 </Button>
